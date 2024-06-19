@@ -5,8 +5,8 @@ import messageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
 import connectToMongoDB from './db/connectToMongoDB.js';
 import cookieParser from 'cookie-parser';
-
-const app=express();
+import { app, server } from './socket/socket.js';
+// const app=express();
 
 
 const port=process.env.port || 5001;
@@ -30,7 +30,7 @@ app.use('/api/users',userRoutes)
 
 
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     connectToMongoDB()
     console.log(`Server is running on ${port}`);
 })
